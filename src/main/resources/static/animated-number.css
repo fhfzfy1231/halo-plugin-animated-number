@@ -1,0 +1,1 @@
+animated-number{box-sizing:border-box;display:block;max-width:100%;overflow:hidden;line-height:1.2;white-space:nowrap;font-variant-numeric:tabular-nums}.animated-number-static{display:inline}.animated-number-digit{display:inline-block;min-width:.62em;text-align:center;will-change:contents}@media (prefers-reduced-motion:reduce){.animated-number-digit{will-change:auto}}

@@ -1,0 +1,30 @@
+plugins {
+    id 'base'
+    id "com.github.node-gradle.node" version "7.1.0"
+}
+
+group 'run.halo.starter.ui'
+
+node {
+    pnpmVersion.set('9.15.9')
+}
+
+tasks.register('npmInstallDeps', NpmTask) {
+    args = ['install', '--no-audit', '--no-fund']
+}
+
+tasks.register('buildFrontend', NpmTask) {
+    group = 'build'
+    description = 'Builds the UI project using pnpm.'
+    args = ['run', 'build-only']
+    dependsOn tasks.named('npmInstallDeps')
+    inputs.dir(layout.projectDirectory.dir('src'))
+    inputs.files(fileTree(
+            dir: layout.projectDirectory,
+            includes: ['*.cjs', '*.ts', '*.js', '*.json', '*.yaml']))
+    outputs.dir(layout.buildDirectory.dir('dist'))
+}
+
+tasks.named('assemble') {
+    dependsOn tasks.named('buildFrontend')
+}

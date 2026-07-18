@@ -1,0 +1,22 @@
+# Refer https://docs.halo.run/developer-guide/plugin/basics/manifest
+
+apiVersion: plugin.halo.run/v1alpha1
+kind: Plugin
+metadata:
+  # The name defines how the plugin is invoked, A unique name
+  name: animated-number
+spec:
+  enabled: true
+  requires: ">=2.25.0"
+  author:
+    name: Akagi_Zen
+    website: https://github.com/Akagi-Zen/halo-plugin-animated-number
+  logo: logo.png
+  homepage: https://github.com/Akagi-Zen/halo-plugin-animated-number#readme
+  repo: https://github.com/Akagi-Zen/halo-plugin-animated-number
+  issues: https://github.com/Akagi-Zen/halo-plugin-animated-number/issues
+  displayName: "滚动数字组件"
+  description: "为 Halo 默认编辑器提供可自适应宽度的滚动数字与日期组件"
+  license:
+    - name: "GPL-3.0"
+      url: "https://github.com/Akagi-Zen/halo-plugin-animated-number/blob/main/LICENSE"
