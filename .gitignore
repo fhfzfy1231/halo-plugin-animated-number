@@ -72,4 +72,5 @@ application-local.properties
 
 /ui/node_modules/
 /workplace/
-/src/main/resources/console/
+/src/main/resources/ui/
+RELEASE-v*.md

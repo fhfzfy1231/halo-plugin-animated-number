@@ -38,8 +38,19 @@
     if (element.dataset.animatedNumberPlayed) return;
     element.dataset.animatedNumberPlayed = 'true';
 
-    const duration = Math.max(600, Number(element.getAttribute('duration') || 1500));
     const digits = [...element.querySelectorAll('.animated-number-digit')];
+    const finish = () => {
+      digits.forEach((digit) => {
+        digit.textContent = digit.dataset.target || '0';
+      });
+    };
+
+    if (window.matchMedia?.('(prefers-reduced-motion: reduce)').matches) {
+      finish();
+      return;
+    }
+
+    const duration = Math.max(600, Number(element.getAttribute('duration') || 1500));
     const startedAt = Date.now();
 
     function frame() {

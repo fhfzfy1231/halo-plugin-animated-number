@@ -1,25 +1,16 @@
 plugins {
     id 'java'
-    id "run.halo.plugin.devtools" version "0.6.2"
+    id "run.halo.plugin.devtools" version "0.8.0"
 }
 
 group 'team.foxbridge.animatednumber'
 
 repositories {
-    maven {
-        name = 'Central Portal Snapshots'
-        url = 'https://central.sonatype.com/repository/maven-snapshots/'
-
-        // Only search this repository for the specific dependency
-        content {
-            includeGroupAndSubgroups('run.halo')
-        }
-    }
     mavenCentral()
 }
 
 dependencies {
-    implementation platform('run.halo.tools.platform:plugin:2.22.11')
+    implementation platform('run.halo.tools.platform:plugin:2.25.0')
     compileOnly 'run.halo.app:api'
 
     testImplementation 'run.halo.app:api'
@@ -44,7 +35,7 @@ tasks.withType(JavaCompile).configureEach {
 
 tasks.register('processUiResources', Copy) {
     from project(':ui').layout.buildDirectory.dir('dist')
-    into layout.buildDirectory.dir('resources/main/console')
+    into layout.buildDirectory.dir('resources/main/ui')
     dependsOn project(':ui').tasks.named('assemble')
     shouldRunAfter tasks.named('processResources')
 }
@@ -58,5 +49,5 @@ tasks.named('generatePluginComponentsIdx') {
 }
 
 halo {
-    version = '2.25.4'
+    version = '2.25'
 }

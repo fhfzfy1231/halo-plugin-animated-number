@@ -1,9 +1,10 @@
 {
   "type": "module",
   "scripts": {
-    "build": "pnpm type-check && pnpm build-only",
+    "build": "run-p type-check \"build-only {@}\" --",
     "build-only": "vite build",
     "dev": "vite build --watch --mode=development",
+    "test:unit": "vitest --passWithNoTests",
     "type-check": "vue-tsc --build"
   },
   "dependencies": {
@@ -19,10 +20,12 @@
     "@types/node": "^20.19.1",
     "@vitejs/plugin-vue": "^6.0.0",
     "@vue/tsconfig": "^0.7.0",
+    "npm-run-all2": "^7.0.2",
     "typescript": "~5.8.3",
     "unplugin-icons": "^22.1.0",
     "vite": "^7.0.0",
+    "vitest": "^4.1.0",
     "vue-tsc": "^2.2.10"
   },
-  "packageManager": "pnpm@9.15.9"
+  "packageManager": "pnpm@10.12.4"
 }
